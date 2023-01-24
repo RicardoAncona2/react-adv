@@ -1,4 +1,5 @@
 import { lazy, LazyExoticComponent } from "react";
+import { ShoppingPage } from '../02-component-patterns/pages/ShoppingPage';
 import {
   LazyPage1,
   LazyPage2,
@@ -31,10 +32,10 @@ const Lazy3 = lazy(
 );
 export const routes: Route[] = [
   {
-    to: "/lazy1",
-    path: "/lazy1",
-    Component: Lazy1,
-    name: "lazy1", //displayed on screen value
+    to: "/shopping",
+    path: "/shopping",
+    Component: ShoppingPage,
+    name: "shopping", //displayed on screen value
   },
   {
     to: "/lazy2",
