@@ -20,11 +20,21 @@ export interface ProductCardProps {
   product: Product;
   children?: ReactElement | ReactElement[];
   className?: string;
-  style?:React.CSSProperties
+  style?: React.CSSProperties;
+  onChange?: (args: onChangeArgs) => void;
+  value?: number;
 }
 export interface ProductCardHOCProps {
   ({ product, children }: ProductCardProps): JSX.Element;
   Title: ({ title, className }: TitleProps) => JSX.Element;
   Image: ({ img }: ImageProps) => JSX.Element;
   Buttons: ({ className }: ButtonProps) => JSX.Element;
+}
+
+export interface onChangeArgs {
+  product: Product;
+  count: number;
+}
+export interface ProductInCart extends Product {
+  count: number;
 }

@@ -4,47 +4,58 @@ import {
   ProductTitle,
   ProductButtons,
 } from "../components/ProductCardModule/index";
-import { UserForm } from "../components/UserRegister- Practice/UserForm";
-import { CustomInput } from "../components/UserRegister- Practice/CustomInput";
+
 import "../styles/custom-styles.css";
+import { Product, ProductInCart } from "../interfaces/interfaces";
+import { useState } from "react";
+import { products } from "../data/products";
+import { useShoppingCart } from "../hooks/useShoppingCart";
+
 export const ShoppingPage = () => {
-  const product = {
-    id: "1",
-    title: "Coffee mug card",
-    img: "./coffee-mug.png",
-  };
+  const { shoppingCart, onProductCountChange } = useShoppingCart();
   return (
     <div>
       <h1>Shopping store</h1>
       <hr />
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
-        <ProductCard product={product}>
-          <ProductCard.Image />
-          {/*<ProductCard.Title title="Hola mundoo" />*/}
-          <ProductCard.Buttons />
-        </ProductCard>
-        <ProductCard product={product} className={"bg-dark"}>
-          <ProductImage className={"custom-image"} />
-          <ProductTitle title="hola mundo123" className={"text-white"} />
-          <ProductButtons className={"custom-buttons"} />
-        </ProductCard>
-        <ProductCard product={product} style={{ backgroundColor: "#70d1f8",boxShadow:"10px 10px 10px rgba(0,0,0,0.2)" }}>
-          <ProductImage style={{ borderRadius: "500px" }} />
-          <ProductTitle title="hola mundo123" style={{ fontWeight: "bold" }} />
-          <ProductButtons style={{ display: "flex", justifyContent: "end" }} />
-        </ProductCard>
+        {products.map((product) => (
+          <ProductCard
+            product={product}
+            className={"bg-dark"}
+            key={product.id}
+            onChange={(event) => onProductCountChange(event)}
+            value={shoppingCart[product.id]?.count || 0}
+          >
+            <ProductImage className={"custom-image"} />
+            <ProductTitle title={product.title} className={"text-white"} />
+            <ProductButtons className={"custom-buttons"} />
+          </ProductCard>
+        ))}
       </div>
-      <br />
-      {/*<UserForm formId="Form-test-1">
-        <CustomInput type="text" name="Name"></CustomInput>
-        <CustomInput type="text" name="LastName"></CustomInput>
-        <CustomInput type="password" name="Password"></CustomInput>
-        <CustomInput
-          type="submit"
-          name="submit"
-          withLabel={false}
-        ></CustomInput>
-  </UserForm>*/}
+      <div className="shopping-cart">
+        {Object.entries(shoppingCart).map(([key, product]) => (
+          <ProductCard
+            key={key}
+            product={product}
+            className={"bg-dark text-white"}
+            style={{ width: "100px" }}
+            onChange={onProductCountChange}
+            value={product.count}
+          >
+            <ProductImage className={"custom-image"} />
+            <ProductButtons
+              className={"custom-buttons"}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            />
+          </ProductCard>
+        ))}
+      </div>
+      <div>
+        <code>{JSON.stringify(shoppingCart, null, 5)}</code>
+      </div>
     </div>
   );
 };
