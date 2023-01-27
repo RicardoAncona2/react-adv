@@ -11,6 +11,7 @@ export interface ProductContextProps {
   counter: number;
   increaseBy: (value: number) => void;
   product: Product;
+  initialValues: ProductCardInitialValues;
 }
 export interface ProductButtonProps {
   increaseBy: (value: number) => void;
@@ -18,11 +19,17 @@ export interface ProductButtonProps {
 }
 export interface ProductCardProps {
   product: Product;
-  children?: ReactElement | ReactElement[];
+  //children?: ReactElement | ReactElement[];
+  children: (args: ProductCartHandlers) => JSX.Element;
   className?: string;
   style?: React.CSSProperties;
   onChange?: (args: onChangeArgs) => void;
   value?: number;
+  initialValues: ProductCardInitialValues;
+}
+export interface ProductCardInitialValues {
+  count: number;
+  maxCount: number;
 }
 export interface ProductCardHOCProps {
   ({ product, children }: ProductCardProps): JSX.Element;
@@ -37,4 +44,12 @@ export interface onChangeArgs {
 }
 export interface ProductInCart extends Product {
   count: number;
+}
+export interface ProductCartHandlers {
+  count: number;
+  isMaxCountReached: boolean;
+  maxCount: number;
+  product: Product;
+  increaseBy: (value: number) => void;
+  reset: () => void;
 }
