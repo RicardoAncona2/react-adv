@@ -1,11 +1,13 @@
 import { lazy, LazyExoticComponent } from "react";
-import { ShoppingPage } from '../02-component-patterns/pages/ShoppingPage';
-import {
-  LazyPage1,
-  LazyPage2,
-  LazyPage3,
-} from "../01-lazyload/components/pages";
 
+import { RegisterPage } from "../03- Forms/pages/RegisterPage";
+
+import {
+  FormikBasicPage,
+  FormikYupPage,
+  FormikComponents,
+  FormikAbstraction,
+} from "../03- Forms/pages/";
 interface Route {
   to: string;
   path: string;
@@ -32,21 +34,33 @@ const Lazy3 = lazy(
 );
 export const routes: Route[] = [
   {
-    to: "/shopping",
-    path: "/shopping",
-    Component: ShoppingPage,
-    name: "shopping", //displayed on screen value
+    to: "/formikYup",
+    path: "/formikYup",
+    Component: FormikYupPage,
+    name: "formikYup", //displayed on screen value
   },
   {
-    to: "/lazy2",
-    path: "/lazy2",
-    Component: Lazy2,
-    name: "lazy2", //displayed on screen value
+    to: "/register",
+    path: "/register",
+    Component: RegisterPage,
+    name: "register", //displayed on screen value
   },
   {
-    to: "/lazy3",
-    path: "/lazy3",
-    Component: Lazy3,
-    name: "lazy3", //displayed on screen value
+    to: "/formikBasic",
+    path: "/formikBasic",
+    Component: FormikBasicPage,
+    name: "formikBasic", //displayed on screen value
+  },
+  {
+    to: "/formikComponents",
+    path: "/formikComponents",
+    Component: FormikComponents,
+    name: "formikComponents", //displayed on screen value
+  },
+  {
+    to: "/formikAbstraction",
+    path: "/formikAbstraction",
+    Component: FormikAbstraction,
+    name: "formikAbstraction", //displayed on screen value
   },
 ];
