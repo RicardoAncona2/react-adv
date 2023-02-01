@@ -7,6 +7,8 @@ import {
   FormikYupPage,
   FormikComponents,
   FormikAbstraction,
+  RegisterFormikPage,
+  DynamicForm,
 } from "../03- Forms/pages/";
 interface Route {
   to: string;
@@ -62,5 +64,17 @@ export const routes: Route[] = [
     path: "/formikAbstraction",
     Component: FormikAbstraction,
     name: "formikAbstraction", //displayed on screen value
+  },
+  {
+    to: "/RegisterFormikPage",
+    path: "/RegisterFormikPage",
+    Component: RegisterFormikPage,
+    name: "RegisterFormikPage", //displayed on screen value
+  },
+  {
+    to: "/DynamicForm",
+    path: "/DynamicForm",
+    Component: DynamicForm,
+    name: "DynamicForm", //displayed on screen value
   },
 ];

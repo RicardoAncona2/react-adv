@@ -4,11 +4,7 @@ import {
   Route,
   NavLink,
 } from "react-router-dom";
-import {
-  LazyPage1,
-  LazyPage2,
-  LazyPage3,
-} from "../01-lazyload/components/pages/index";
+
 import logo from "../logo.svg";
 import { routes } from "../routes/routes";
 import { Suspense } from "react";
@@ -45,7 +41,7 @@ export const Navigation = () => {
             ))}
           </Switch>
         </div>
-      </Router>{" "}
+      </Router>
     </Suspense>
   );
 };

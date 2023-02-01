@@ -1,0 +1,33 @@
+[
+    {
+        "type":"input",
+        "name":"firstName",
+        "placeholder":"Ricardo",
+        "label":"first Name",
+        "value":"",
+        "validations":[{"type":"required"}]
+    },
+    {
+        "type":"input",
+        "name":"lastName",
+        "placeholder":"Ancona",
+        "label":"last Name",
+        "value":"",
+        "validations":[{"type":"required"},{"type":"minLength","value":5}]
+    },
+    {
+        "type":"email",
+        "name":"email",
+        "placeholder":"alguien@example.com",
+        "label":"Email",
+        "value":"alguien@example.com",
+        "validations":[{"type":"email"},{"type":"required"}]
+    },
+    {
+        "type":"select",
+        "name":"favoriteGame",
+        "label":"Favorite Game",
+        "value":"",
+        "options":[{"id":1,"label":"SSBUltimate"},{"id":2,"label":"MetalGear"},{"id":3,"label":"ResidentEvilVII"}]
+    }
+]
